@@ -1,4 +1,3 @@
-/* CSS Global */
 * {
     margin: 0;
     padding: 0;
@@ -11,6 +10,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100hv;
+    min-height: 100vh;
     color: #fff;
 }
