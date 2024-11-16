@@ -14,6 +14,27 @@ const ImcCalc = () => {
         setWeight("");
     };
 
+    // validação dos inputs
+    const validDigits = (text) => {
+        // filtro no 'text'. substituindo o digito errado por 'vazio'
+        return text.replace(/[^0-9,]/g, "")
+    }
+
+    // função para alterar a Altura
+    const handleHeightChange = (e) => {
+        // validação
+        const updatedValue = validDigits(e.target.value)
+
+        setHeight(updatedValue);
+    };
+   
+    const handleWeightChange = (e) => {
+        // validação
+        const updatedValue = validDigits(e.target.value)
+
+        setWeight(updatedValue);
+    };
+
   return (
     <div id="calc-container">
     <h2>Calculadora de IMC</h2>
@@ -22,13 +43,13 @@ const ImcCalc = () => {
             <div className="form-control">
                 <label htmlFor="height">Altura:</label>
                 <input type="text" name="height" id="height" placeholder="Exemplo 1,75"
-                onChange={(e) => setHeight(e.target.value)}
+                onChange={(e) => handleHeightChange(e)}
                 value={height}/>
             </div>
             <div className="form-control">
                 <label htmlFor="weight">Peso:</label>
                 <input type="text" name="weight" id="weight" placeholder="Exemplo 70,5"
-                onChange={(e) => setWeight(e.target.value)}
+                onChange={(e) => handleWeightChange(e)}
                 value={weight}/>
             </div>
         </div>
