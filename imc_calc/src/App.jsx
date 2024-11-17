@@ -1,14 +1,23 @@
-import ImcCalc from './components/imcCalc'
+import {data} from "./data/data";
 
-import './App.css'
+import { useState } from "react";
+
+import ImcCalc from "./components/imcCalc";
+import ImcTable from "./components/ImcTable";
+
+import "./App.css";
 
 function App() {
+  const calcImc = (e, height, weight) => {
+    e.preventDefault();
+    console.log("Executou");
+  };
 
-  return (
-    <div className='container'>
-      <ImcCalc/>
-    </div>
-  )
+  const [imc, setImc] = useState("")
+  const [info, setInfo] = useState("")
+  const [infoClass, setInfoClass] = useState("")
+
+  return <div className='container'> {!imc ? <ImcCalc calcImc={calcImc}/> : <ImcTable/>}</div>;
 }
 
-export default App
+export default App;
