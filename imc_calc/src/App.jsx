@@ -33,7 +33,7 @@ function App() {
   const [info, setInfo] = useState("")
   const [infoClass, setInfoClass] = useState("")
 
-  return <div className='container'> {!imc ? <ImcCalc calcImc={calcImc}/> : <ImcTable/>}</div>;
+  return <div className='container'> {!imc ? <ImcCalc calcImc={calcImc}/> : <ImcTable data={data}/>}</div>;
 }
 
 export default App;
