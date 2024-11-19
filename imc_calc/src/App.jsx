@@ -40,6 +40,7 @@ function App() {
     if (!info) return;
   };
 
+  // função para resetar calculadora
   const resetCalc = (e) => {
     e.preventDefault;
 
@@ -48,6 +49,7 @@ function App() {
     setInfoClass("");
   }
 
+  // principais states
   const [imc, setImc] = useState("")
   const [info, setInfo] = useState("")
   const [infoClass, setInfoClass] = useState("")
