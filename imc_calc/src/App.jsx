@@ -2,7 +2,7 @@ import {data} from "./data/data";
 
 import { useState } from "react";
 
-import ImcCalc from "./components/imcCalc";
+import ImcCalc from "./components/ImcCalc";
 import ImcTable from "./components/ImcTable";
 
 import "./App.css";
@@ -22,12 +22,13 @@ function App() {
     
     // console.log(heightFloat, weightFloat);
 
-    // calculo do imc
+    // calculo do imc. com resultado formatado para 1 casa decimal
     const imcResult = (weightFloat / (heightFloat * heightFloat)).toFixed(1);
 
     // console.log(imcResult);
     setImc(imcResult);
 
+    // iterar sobre os elementos sem a necessidade de um loop tradicional
     data.forEach((item) => {
       if (imcResult >= item.min && imcResult <= item.max) {
         setInfo(item.info);
@@ -35,14 +36,31 @@ function App() {
       }
     });
 
+    // valores fora do comum
     if (!info) return;
   };
+
+  const resetCalc = (e) => {
+    e.preventDefault;
+
+    setImc("");
+    setInfo("");
+    setInfoClass("");
+  }
 
   const [imc, setImc] = useState("")
   const [info, setInfo] = useState("")
   const [infoClass, setInfoClass] = useState("")
 
-  return <div className='container'> {!imc ? <ImcCalc calcImc={calcImc}/> : <ImcTable data={data} imc={imc} info={info} infoClass={infoClass}/>}</div>;
+  return <div className='container'> {!imc ? 
+    <ImcCalc calcImc={calcImc}/> : 
+    <ImcTable 
+      data={data} 
+      imc={imc} 
+      info={info} 
+      infoClass={infoClass}
+      resetCalc={resetCalc}/>}
+  </div>;
 }
 
 export default App;
